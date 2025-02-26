@@ -1,17 +1,28 @@
 function App() {
+  const openDialog = (dialogId) => {
+    const dialog = document.getElementById(dialogId);
+    dialog.showModal();
+    setTimeout(() => dialog.querySelector("input[autofocus]")?.focus(), 100);
+  };
+
   return (
     <>
-      <button class="btn" onclick="login.showModal()">
+      <button class="btn" onClick={() => openDialog("login")}>
         open login
       </button>
-      <button class="btn" onclick="register.showModal()">
+      <button class="btn" onClick={() => openDialog("register")}>
         open register
       </button>
 
       <dialog id="login" class="modal bg-transparent">
         <div class="modal-box flex flex-col gap-4 p-8 bg-transparent border border-secondary">
           <label class="fieldset-label">Email</label>
-          <input type="email" class="input w-full" placeholder="Email" />
+          <input
+            type="email"
+            class="input w-full"
+            placeholder="Email"
+            autofocus="true"
+          />
 
           <label class="fieldset-label">Password</label>
           <input type="password" class="input w-full" placeholder="Password" />
@@ -26,7 +37,12 @@ function App() {
       <dialog id="register" class="modal bg-transparent">
         <div class="modal-box register flex flex-col gap-4 p-8 bg-transparent border border-secondary">
           <label class="fieldset-label">Email</label>
-          <input type="email" class="input w-full" placeholder="Email" />
+          <input
+            type="email"
+            class="input w-full"
+            placeholder="Email"
+            autofocus
+          />
 
           <label class="fieldset-label">Password</label>
           <input
